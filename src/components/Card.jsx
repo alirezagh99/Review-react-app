@@ -2,7 +2,6 @@ import React from "react";
 
 function Card(props) {
   const { id, text, name, job, image } = props.data;
-  console.log(text);
   return (
     <div className="w-1/2 m-auto shadow-2xl p-5 flex mt-16 flex-col items-center">
       <img
@@ -17,14 +16,27 @@ function Card(props) {
         <p className="text-[rgba(0,0,0,0.75)] mb-4 text-sm">{text}</p>
       </div>
       <div className="mb-4">
-        <button className="border-2 hover:bg-black hover:text-white transition-all duration-500 rounded px-2 m-3">
+        <button
+          onClick={() => {
+            props.handlePrev();
+          }}
+          className="border-2 hover:bg-black hover:text-white transition-all duration-500 rounded px-2 m-3"
+        >
           prev
         </button>
-        <button className="border-2 hover:bg-black hover:text-white transition-all duration-500 rounded px-2 m-3">
+        <button
+          onClick={() => {
+            props.handleNext();
+          }}
+          className="border-2 hover:bg-black hover:text-white transition-all duration-500 rounded px-2 m-3"
+        >
           next
         </button>
       </div>
-      <button className="border hover:bg-black hover:text-white transition-all duration-500 px-3 text-sm bg-gray-200 text-blue-500">
+      <button
+        onClick={() => props.handleSurprise()}
+        className="border hover:bg-black hover:text-white transition-all duration-500 px-3 text-sm bg-gray-200 text-blue-500"
+      >
         Surprise me
       </button>
     </div>
